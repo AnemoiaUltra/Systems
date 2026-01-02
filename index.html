@@ -6,10 +6,13 @@
 <title>Systems</title>
 <style>
   body { font-family: sans-serif; margin: 20px; }
-  input { padding: 10px; width: 70%; font-size: 16px; }
-  button { padding: 10px; font-size: 16px; margin-left: 5px; }
+  input { padding: 12px; width: 70%; font-size: 16px; }
+  button { padding: 12px; font-size: 16px; margin-left: 5px; cursor: pointer; }
+  #addBtn { background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
   ul { list-style: none; padding: 0; }
-  li { margin: 10px 0; }
+  li { margin: 15px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+  li ul { margin-top: 5px; }
+  li button { background-color: #f44336; color: white; border: none; border-radius: 5px; padding: 5px 10px; cursor: pointer; margin-top: 5px; }
 </style>
 </head>
 <body>
@@ -17,7 +20,7 @@
 <h1>Systems</h1>
 
 <input id="systemInput" placeholder="Add a new system" />
-<button id="addBtn">Add</button>
+<button id="addBtn">+ Add System</button>
 
 <ul id="systemsList"></ul>
 
@@ -28,7 +31,7 @@ const systemsList = document.getElementById('systemsList');
 
 let systems = JSON.parse(localStorage.getItem('systems')) || [];
 
-// Function to render systems
+// Render all systems
 function renderSystems() {
   systemsList.innerHTML = '';
   systems.forEach((sys, index) => {
@@ -46,7 +49,7 @@ function renderSystems() {
     `;
     systemsList.appendChild(li);
 
-    // Attach checkbox event listeners
+    // Add checkbox listeners
     sys.tasks.forEach((t, i) => {
       const cb = document.getElementById(`sys${index}-task${i}`);
       cb.addEventListener('change', () => {
@@ -57,7 +60,7 @@ function renderSystems() {
   });
 }
 
-// Add system function
+// Add a new system
 function addSystem() {
   const name = systemInput.value.trim();
   if (!name) return;
