@@ -5,19 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Systems</title>
 <style>
-  body { font-family: sans-serif; margin: 20px; }
-  input { padding: 12px; width: 70%; font-size: 16px; }
-  button { padding: 12px; font-size: 16px; margin-left: 5px; cursor: pointer; }
-  #addBtn { background-color: #4CAF50; color: white; border: none; border-radius: 5px; }
+  body { font-family: sans-serif; margin: 20px; background-color: #121212; color: #e0e0e0; }
+  input { padding: 12px; width: 70%; font-size: 16px; background-color: #1e1e1e; color: #e0e0e0; border: 1px solid #333; }
+  button { padding: 12px; font-size: 16px; margin-left: 5px; cursor: pointer; border: none; border-radius: 5px; }
+  #addBtn { background-color: #388E3C; color: white; }
+  #infoBtn {
+    background-color: #1976D2;
+    color: white;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 16px;
+  }
   ul { list-style: none; padding: 0; }
-  li { margin: 15px 0; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+  li { margin: 15px 0; padding: 10px; border: 1px solid #333; border-radius: 5px; }
   li ul { margin-top: 5px; }
-  li button { background-color: #f44336; color: white; border: none; border-radius: 5px; padding: 5px 10px; cursor: pointer; margin-top: 5px; }
+  li button { background-color: #d32f2f; color: white; padding: 5px 10px; cursor: pointer; margin-top: 5px; }
 </style>
 </head>
 <body>
 
 <h1>Systems</h1>
+<button id="infoBtn">?</button>
 
 <input id="systemInput" placeholder="Add a new system" />
 <button id="addBtn">+ Add System</button>
@@ -81,6 +90,10 @@ function removeSystem(index) {
 addBtn.addEventListener('click', addSystem);
 systemInput.addEventListener('keypress', (e) => {
   if (e.key === 'Enter') addSystem();
+});
+
+document.getElementById('infoBtn').addEventListener('click', () => {
+  alert("Prep = getting ready for the system\nFocus = main action or work\nReview = reflection or recap");
 });
 
 // Initial render
